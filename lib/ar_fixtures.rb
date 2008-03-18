@@ -45,7 +45,11 @@ class ActiveRecord::Base
     # Write a file that can be loaded with +fixture :some_table+ in tests.
     # Uses existing data in the database.
     #
-    # Will be written to +test/fixtures/table_name.yml+. Can be restricted to some number of rows.
+    # Will be written to +test/fixtures/table_name.yml+. Can be restricted to
+    # some number of rows.
+    #
+    # If a method named +to_named_fixture+ is available for the models, the
+    # fixtures will be named with the result of that method.
     def to_fixture(limit=nil)
       opts = {}
       opts[:limit] = limit if limit
@@ -53,7 +57,7 @@ class ActiveRecord::Base
       write_file(File.expand_path("test/fixtures/#{table_name}.yml", RAILS_ROOT), 
           self.find(:all, opts).inject({}) { |hsh, record|
               fixture_name = if record.respond_to?(:to_named_fixture)
-                record.to_named_fixture
+                record.to_named_fixture.to_s
               else
                 "#{table_name.singularize}_#{'%05i' % record.id rescue record.id}"
               end
