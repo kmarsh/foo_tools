@@ -1,0 +1,8 @@
+= foo_tools
+
+Random Rails stuff that I've cribbed from other places and improved upon, mostly
+to bootstrap a new Rails project quickly.
+
+== Inspirations and Sources
+
+* ar_fixtures from Geoffrey Grosenbach <boss [at] topfunky [dot] com>
