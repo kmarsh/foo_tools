@@ -6,3 +6,4 @@ to bootstrap a new Rails project quickly.
 == Inspirations and Sources
 
 * ar_fixtures from Geoffrey Grosenbach <boss [at] topfunky [dot] com>
+* annotate_models from Dave Thomas
